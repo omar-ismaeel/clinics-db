@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee: one
+  reason: MyText
+  start_date: 2019-09-24 13:13:29
+  end_date: 2019-09-24 13:13:29
+
+two:
+  employee: two
+  reason: MyText
+  start_date: 2019-09-24 13:13:29
+  end_date: 2019-09-24 13:13:29
