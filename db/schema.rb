@@ -76,6 +76,11 @@ ActiveRecord::Schema.define(version: 20200421135646) do
     t.index ["department_head_id"], name: "index_departments_on_department_head_id"
   end
 
+  create_table "department_heads", force: :cascade do |t|
+    t.integer "doctor_id"
+    t.integer "department_id"
+  end
+
   create_table "doctors", force: :cascade do |t|
     t.string "name"
     t.string "rank"
@@ -86,7 +91,7 @@ ActiveRecord::Schema.define(version: 20200421135646) do
     t.integer "department_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "stripe_customer_id"
+    t.string "stripe_customer_id"
   end
 
   create_table "patients", force: :cascade do |t|
@@ -97,7 +102,7 @@ ActiveRecord::Schema.define(version: 20200421135646) do
     t.bigint "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "stripe_customer_id"
+    t.string "stripe_customer_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -117,6 +122,10 @@ ActiveRecord::Schema.define(version: 20200421135646) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "department_head", "departments"
+  add_foreign_key "department_head", "doctors"
+  add_foreign_key "reviews", "doctors"
+  add_foreign_key "reviews", "patients"
   add_foreign_key "appointments", "patients"
   add_foreign_key "skills", "doctors"
   add_foreign_key "availables", "doctors"
