@@ -43,6 +43,8 @@ end
 end
 
 
-depratments = ["Emergency","Cardiology","Intensive care","Neurology","Oncology"].map do |department|
-  Department.create(name: department,department_head_id: doctors.sample.id)
+departments = ["Emergency","Cardiology","Intensive care","Neurology","Oncology"].map do |department|
+  Department.create(name: department)
 end
+
+Department_head.create(doctor_id: doctors.sample.id, department_id: departments.sample.id)
